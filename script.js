@@ -23,25 +23,12 @@ function gameLogic() {
       highscore = score;
       document.querySelector(".highscore").textContent = highscore;
     }
-    //Cuando el numero es muy alto
-  } else if (guess > secretNumber) {
-    if (score > 1) {
-      document.querySelector(".message").textContent = "📈Too High!";
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
-      score = 0;
-      document.querySelector(".message").textContent = "🥴 Yoy lost the game!";
-      document.querySelector(".score").textContent = score;
-      document.querySelector(".number").textContent = secretNumber;
-      document.querySelector("body").style.backgroundColor = "#FF0000";
-      document.querySelector(".number").style.width = "30rem";
-    }
 
-    //Cuando el numero es muy bajo
-  } else if (guess < secretNumber) {
+    //Cuando el numero es el equivocado
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector(".message").textContent = "📉 Too Low!";
+      document.querySelector(".message").textContent =
+        guess > secretNumber ? "📈Too High!" : "📉 Too Low!";
       score--;
       document.querySelector(".score").textContent = score;
     } else {
